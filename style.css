@@ -1,7 +1,7 @@
-body {
+html, body {
     font-family: sans-serif;
     background-color: #F7F8FA;
-    
+    height: 100%;
     
     /* display: flex;
     justify-content: center;
@@ -48,6 +48,6 @@ header {
 
 #content {
     display: flex;
-    height: 100%;
-    
+    align-items: stretch;
+    height: 85%;   
 }
