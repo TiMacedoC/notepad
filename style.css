@@ -33,7 +33,9 @@ header {
     width: 35px;
     align-self: center;
     margin-top: -15px;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
+    margin-left: 3px;
+    margin-right: 3px;
 }
 
 .eachNote{
@@ -63,8 +65,23 @@ header {
 #inputTitle{
     background-color: #fff7a0;
     border-radius: 20px;
-    width: 100%;
+    width: 99%;
+    height: 8%;
+    font-size: 25px;
+    text-align: center;
+    resize: none;
 }
+
+#inputNote{
+    background-color: #fff7a0;
+    border-radius: 20px;
+    width: 99%;
+    height: 90%;
+    font-size: 25px;
+    resize: none;
+}
+
+
 
 #content {
     display: flex;

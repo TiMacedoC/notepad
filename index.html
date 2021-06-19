@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
     <title>NotePad</title>
 </head>
@@ -20,9 +20,17 @@
 
     <div id="content">
         <div id="noteList">
+
             <h1>Notes</h1>
 
-            <img src="add-note.png" alt="add note">
+            <div id="buttons">
+
+                <img src="images/add-note.png" alt="add note">
+                <img src="images/save.png" alt="save">
+                <img src="images/delete-cancel.png" alt="delete">
+
+            </div>
+
 
             <h2 class="eachNote">Note 1</h2>
             <h2 class="eachNote">Nolkhakhjaklhjhasjkhte 2</h2>
@@ -32,7 +40,7 @@
             <h2 class="eachNote">Note 6</h2>
         </div>
 
-        <!-- <div id="openedNote">
+        <div id="openedNote">
             <h2>Note Opened name</h2>
             <p> Note Content = Não use o localStorage para guardar dados sensíveis;
                 Os dados que estão gravados não tem camada nenhuma de proteção de acesso, ou seja, todos os dados
@@ -44,12 +52,16 @@
                 Você só pode usar strings no localStorage, e isso é um saco, porque limita a gravação de dados mais
                 complexos e se você tentar fazer qualquer conversão se transforma numa gambiarra sem limites;
             </p>
-        </div> -->
 
-        <div id="inputNote">
-            <input id="inputTitle" type="text" placeholder="Note Title">
+            <!-- <textarea id="inputTitle" type="text" placeholder="Note Title"></textarea>
+
+
+            <textarea name="" id="inputNote" cols="30" rows="10" placeholder="NOTE"></textarea> -->
 
         </div>
+
+
+    </div>
 
     </div>
 
