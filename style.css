@@ -1,6 +1,6 @@
 html, body {
     font-family: sans-serif;
-    background-color: #F7F8FA;
+    background-color: #8b8b8b;
     height: 100%;
     
     /* display: flex;
@@ -9,7 +9,7 @@ html, body {
 }
 
 header {
-    background-color: #faf9b2;
+    background-color: #F7F8FA;
     padding: 1px;
     border-radius: 20px;
     
@@ -18,7 +18,7 @@ header {
 }
 
 #noteList {
-    background-color: #535331;
+    background-color: #bbbbbb;
     border-radius: 20px;
     width: 30%;
     text-align: center;
@@ -27,6 +27,13 @@ header {
     display: flex;
     flex-direction: column;
     align-items: stretch;
+}
+
+#noteList img {
+    width: 35px;
+    align-self: center;
+    margin-top: -15px;
+    margin-bottom: 18px;
 }
 
 .eachNote{
@@ -39,11 +46,24 @@ header {
 }
 
 #openedNote{
-    background-color: #97975e;
+    background-color: #fff7a0;
     border-radius: 20px;
     width: 70%;
-    
-    
+}
+
+#openedNote h2{
+    text-align: center;
+}
+
+#openedNote p{
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+#inputTitle{
+    background-color: #fff7a0;
+    border-radius: 20px;
+    width: 100%;
 }
 
 #content {
