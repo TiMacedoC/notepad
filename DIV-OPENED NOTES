@@ -1,0 +1,33 @@
+------CRIAR NOTA-------
+
+            <textarea id="inputTitle" type="text" placeholder="Note Title"></textarea>
+
+
+            <textarea name="" id="inputNote" cols="30" rows="10" placeholder="NOTE"></textarea>
+
+------CRIAR NOTA-------
+
+-----NOTA ABERTA-------
+
+            <h2>Note Opened name</h2>
+            <p> Note Content = Não use o localStorage para guardar dados sensíveis;
+                Os dados que estão gravados não tem camada nenhuma de proteção de acesso, ou seja, todos os dados
+                gravados
+                ali podem ser acessados por qualquer código da sua página;
+                Em qualquer browser, o localStorage é limitado a guardar apenas 5Mb de dados. Muito mais que os 4Kb dos
+                cookies;
+                O uso do localStorage é sincrona, ou seja, toda execução só é feita uma depois da outra;
+                Você só pode usar strings no localStorage, e isso é um saco, porque limita a gravação de dados mais
+                complexos e se você tentar fazer qualquer conversão se transforma numa gambiarra sem limites;
+            </p>
+
+
+-----NOTA ABERTA-------
+
+
+
+
+--------SEM NOTAS----------
+
+            <h1 class="no-notes">OPEN A NOTE</h1>
+

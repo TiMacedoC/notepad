@@ -1,13 +1,9 @@
-outilne: none;
-
-serve para retirar a borda do textArea quando ele está ativo
-
-
 html, body {
     font-family: sans-serif;
     background-color: #8b8b8b;
     height: 100%;
-    
+
+    color: #232324;
     /* display: flex;
     justify-content: center;
     flex-direction: column; */
@@ -34,14 +30,44 @@ header {
     align-items: stretch;
 }
 
-#noteList img {
+img {
     width: 35px;
     align-self: center;
     margin-top: -15px;
     margin-bottom: 16px;
     margin-left: 3px;
     margin-right: 3px;
+
+
+    transition: opacity .3s;
+    transition: transform .3s;
+
 }
+
+img:hover {
+    cursor: pointer;
+    opacity: .8;
+    transform: scale(1.1);
+}
+
+img:active {
+    transition: transform 0s;
+    transform: none;
+    opacity: 1;
+}
+
+.actions {
+    /* background-color: aqua; */
+    padding-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.actions img {
+    margin: 0 1rem;
+}
+
 
 .eachNote{
     background-color: #F7F8FA;
@@ -50,12 +76,36 @@ header {
     margin-top: 5px;
     margin-bottom: 5px;
     border-radius: 10px;
+
+    transition: filter .3s;
+    transition: transform .3s;
 }
 
-#openedNote{
+.eachNote:hover {
+    cursor: pointer;
+    transform: scale(.97);
+    filter: brightness(1.2);
+}
+.eachNote:active {
+    transition: transform 0s;
+    transform: none;
+    filter: none;
+}
+
+#openedNote {
     background-color: #fff7a0;
     border-radius: 20px;
     width: 70%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+#openedNote .no-notes {
+    margin-top: auto;
+    margin-bottom: auto;
+    text-align: center;
+    font-size: 3rem;
 }
 
 h1, h2 {
@@ -79,8 +129,10 @@ h1, h2 {
     font-size: 25px;
     text-align: center;
     resize: none;
-    line-height: 30px;
+    /* line-height: 30px; */
 
+    padding-top: 2rem;
+    padding-bottom: 0;
     /* ----Tira a borda destacada ao clicar---- */
     outline: none;
 
@@ -100,8 +152,6 @@ h1, h2 {
     /* ----Tira a borda destacada ao clicar---- */
     outline: none;
 }
-
-
 
 #content {
     display: flex;
