@@ -1,6 +1,6 @@
-#NotePad 
+# NotePad 
 
-#Feito do zero
+# Projeto pessoal feito do zero
 
-##Rodando: https://timacedoc.github.io/notepad/
+## Rodando: https://timacedoc.github.io/notepad/
 
