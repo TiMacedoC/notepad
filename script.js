@@ -1,13 +1,3 @@
-const createANoteField =
-    `<textarea id="inputTitle" type="text" placeholder="Note Title"></textarea>
-    <div class="actions">
-                <abbr title="Save Note"><img onclick="saveNote()" src="images/save.png" alt="save"></abbr>
-                
-                <abbr title="Cancel"><img onclick="cancelNoteCreation()" src="images/delete-cancel.png" alt="delete"></abbr>
-    </div>
-    <textarea name="" id="inputNote" cols="30" rows="10" placeholder="NOTE"></textarea>
-    `
-
 const cancelButton =
     `
     <abbr title="Cancel"><img onclick="cancelNoteCreation()" src="images/delete-cancel.png" alt="delete"></abbr>
@@ -26,7 +16,17 @@ const notes = {
 
 window.onload = showNotesList();
 
-function addNote() {
+function addNote(title, content, position) {
+    let createANoteField =
+        `<textarea id="inputTitle" type="text" placeholder="Note Title">${title ? title : ""}</textarea>
+            <div class="actions">
+                <abbr title="Save Note"><img onclick="${title ? `saveOnEdit(${position})` : "saveNote()"}" src="images/save.png" alt="save"></abbr>
+                
+                <abbr title="Cancel"><img onclick="cancelNoteCreation()" src="images/delete-cancel.png" alt="delete"></abbr>
+            </div>
+        <textarea name="" id="inputNote" cols="30" rows="10" placeholder="NOTE">${content ? content : ""}</textarea>
+        `
+
     let getHTML = document.getElementById("openedNote");
     getHTML.textContent = ""
     getHTML.insertAdjacentHTML("afterbegin", createANoteField);
@@ -53,7 +53,6 @@ function saveNote() {
     cancelNoteCreation();
     showNotesList()
     storageRetrieve();
-
 }
 
 function storageSave() {
@@ -128,5 +127,14 @@ function deleteNote(j) {
 }
 
 function editNote(k) {
-    console.log(k);
+    storageRetrieve();
+
+    addNote(noteList[k].title, noteList[k].content, k);
+
+
+}
+
+function saveOnEdit(position) {
+    saveNote();
+    deleteNote(position);
 }
