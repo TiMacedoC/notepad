@@ -16,9 +16,13 @@ const noNotes =
     `
     <h1 class="no-notes">OPEN A NOTE</h1>
     `
-
-// -------SE JÁ TIVER DADOS SALVOS RECEBE OS DADOS E TRANSFORMA EM OBJETO, SENÃO RECEBE UM ARRAY VAZIO-------
 var noteList = (localStorage.getItem("notesList") != null) ? (JSON.parse(localStorage.getItem("notesList"))) : ([]);
+
+const notes = {
+    title: "",
+    content: "",
+    id: NaN,
+};
 
 window.onload = showNotesList();
 
@@ -29,23 +33,19 @@ function addNote() {
 }
 
 function cancelNoteCreation() {
-
     let getHTML = document.getElementById("openedNote");
     getHTML.textContent = ""
     getHTML.insertAdjacentHTML("afterbegin", noNotes);
 }
 
 function saveNote() {
-
     let getNoteTitle = document.getElementById("inputTitle").value;
 
     let getNoteContent = document.getElementById("inputNote").value;
 
-    const notes = {
-        title: getNoteTitle,
-        content: getNoteContent,
-    };
-
+    notes.title = getNoteTitle;
+    notes.content = getNoteContent;
+    notes.id = generateNoteId();
 
     noteList.push(notes);
 
@@ -54,14 +54,13 @@ function saveNote() {
     localStorage.setItem(`notesList`, toJson);
 
     cancelNoteCreation();
+    showNotesList()
     jsonToObject();
-    window.onload
+
 }
 
 function jsonToObject() {
-
     noteList = JSON.parse(localStorage.getItem("notesList"));
-
 }
 
 
@@ -73,7 +72,7 @@ function showNotesList() {
     for (let i = 0; i < noteList.length; i++) {
 
 
-        let finalHTML = `<h2 class="eachNote">${noteList[i].title}</h2>`
+        let finalHTML = `<h2 class="eachNote" onclick="showOpenedNote(${i})">${noteList[i].title}</h2>`
 
         getHTML.insertAdjacentHTML("beforeend", finalHTML)
     }
@@ -81,3 +80,33 @@ function showNotesList() {
     console.log("entrou");
 }
 
+function generateNoteId() {
+    let id = Math.floor(Math.random() * (499 - 99) + 99);
+
+    for (let i = 0; i < noteList.length; i++) {
+        if (id == noteList[i].id) {
+            console.log("achou igual")
+            generateNoteId()
+        }
+    }
+
+    return id;
+}
+
+
+function showOpenedNote(i) {
+    let getHTML = document.getElementById("openedNote");
+    getHTML.textContent = "";
+
+    let finalHTML =
+        `
+            <div id="top">
+                <abbr title="Delete note"><img onclick="#" src="images/delete-file-icon.png" alt="add note"></abbr>
+                <h2>${noteList[i].title}</h2>
+            </div>
+                <p>${noteList[i].content}</p>
+            `
+
+    getHTML.insertAdjacentHTML("beforeend", finalHTML);
+
+}
