@@ -18,18 +18,11 @@ const noNotes =
     `
 
 // -------SE JÁ TIVER DADOS SALVOS RECEBE OS DADOS E TRANSFORMA EM OBJETO, SENÃO RECEBE UM ARRAY VAZIO-------
-const noteList = (localStorage.getItem("notesList") != null) ? (JSON.parse(localStorage.getItem("notesList"))) : ([]);
+var noteList = (localStorage.getItem("notesList") != null) ? (JSON.parse(localStorage.getItem("notesList"))) : ([]);
 
-
-function showNotesList() {
-    const xed = document.getElementById("noteList");
-
-    console.log("teste", xed);
-}
-
+window.onload = showNotesList();
 
 function addNote() {
-
     let getHTML = document.getElementById("openedNote");
     getHTML.textContent = ""
     getHTML.insertAdjacentHTML("afterbegin", createANoteField);
@@ -60,18 +53,31 @@ function saveNote() {
 
     localStorage.setItem(`notesList`, toJson);
 
-    cancelNoteCreation()
-    showMe()
+    cancelNoteCreation();
+    jsonToObject();
+    window.onload
 }
 
-function showMe() {
+function jsonToObject() {
 
-    let y = JSON.parse(localStorage.getItem("notesList"));
-
-    console.log("Voltou a ser objeto?")
-    console.log(y);
+    noteList = JSON.parse(localStorage.getItem("notesList"));
 
 }
 
 
+function showNotesList() {
+    var getHTML = document.getElementById("everyNote")
+
+    getHTML.textContent = "";
+
+    for (let i = 0; i < noteList.length; i++) {
+
+
+        let finalHTML = `<h2 class="eachNote">${noteList[i].title}</h2>`
+
+        getHTML.insertAdjacentHTML("beforeend", finalHTML)
+    }
+
+    console.log("entrou");
+}
 
