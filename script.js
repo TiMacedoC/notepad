@@ -49,20 +49,23 @@ function saveNote() {
 
     noteList.push(notes);
 
-    let toJson = JSON.stringify(noteList)
-
-    localStorage.setItem(`notesList`, toJson);
-
+    storageSave()
     cancelNoteCreation();
     showNotesList()
-    jsonToObject();
+    storageRetrieve();
 
 }
 
-function jsonToObject() {
+function storageSave() {
+    let toJson = JSON.stringify(noteList)
+    localStorage.setItem(`notesList`, toJson);
+
+}
+
+
+function storageRetrieve() {
     noteList = JSON.parse(localStorage.getItem("notesList"));
 }
-
 
 function showNotesList() {
     var getHTML = document.getElementById("everyNote")
@@ -95,13 +98,16 @@ function generateNoteId() {
 
 
 function showOpenedNote(i) {
+    console.log(i)
+
     let getHTML = document.getElementById("openedNote");
     getHTML.textContent = "";
 
     let finalHTML =
         `
             <div id="top">
-                <abbr title="Delete note"><img onclick="#" src="images/delete-file-icon.png" alt="add note"></abbr>
+                <abbr title="Edit note"><img onclick="editNote(${i})" src="images/edit-file-icon.png" alt="add note"></abbr>
+                <abbr title="Delete note"><img onclick="deleteNote(${i})" src="images/delete-file-icon.png" alt="add note"></abbr>
                 <h2>${noteList[i].title}</h2>
             </div>
                 <p>${noteList[i].content}</p>
@@ -109,4 +115,18 @@ function showOpenedNote(i) {
 
     getHTML.insertAdjacentHTML("beforeend", finalHTML);
 
+}
+
+function deleteNote(j) {
+    storageRetrieve();
+
+    noteList.splice(j, 1);
+
+    storageSave();
+    showNotesList();
+    cancelNoteCreation();
+}
+
+function editNote(k) {
+    console.log(k);
 }
