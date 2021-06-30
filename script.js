@@ -17,8 +17,15 @@ const noNotes =
     <h1 class="no-notes">OPEN A NOTE</h1>
     `
 
+// -------SE JÁ TIVER DADOS SALVOS RECEBE OS DADOS E TRANSFORMA EM OBJETO, SENÃO RECEBE UM ARRAY VAZIO-------
+const noteList = (localStorage.getItem("notesList") != null) ? (JSON.parse(localStorage.getItem("notesList"))) : ([]);
 
-const noteList = [];
+
+function showNotesList() {
+    const xed = document.getElementById("noteList");
+
+    console.log("teste", xed);
+}
 
 
 function addNote() {
@@ -49,9 +56,9 @@ function saveNote() {
 
     noteList.push(notes);
 
-    localStorage.setItem(`notesList`, noteList);
+    let toJson = JSON.stringify(noteList)
 
-    console.log(noteList);
+    localStorage.setItem(`notesList`, toJson);
 
     cancelNoteCreation()
     showMe()
@@ -59,8 +66,12 @@ function saveNote() {
 
 function showMe() {
 
-    let x = localStorage.getItem("notesList");
+    let y = JSON.parse(localStorage.getItem("notesList"));
 
-    console.log("entrou no showme")
-    console.log(x);
+    console.log("Voltou a ser objeto?")
+    console.log(y);
+
 }
+
+
+
