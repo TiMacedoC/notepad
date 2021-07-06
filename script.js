@@ -6,6 +6,8 @@ const noNotes =
     `
     <h1 class="no-notes">OPEN A NOTE</h1>
     `
+//Verifica se já existem notas salvas no LocalStorage e às restaura, 
+//se não existirem notas cria a lista de notas como um array vazio
 var noteList = (localStorage.getItem("notesList") != null) ? (JSON.parse(localStorage.getItem("notesList"))) : ([]);
 
 const notes = {
@@ -58,7 +60,6 @@ function saveNote() {
 function storageSave() {
     let toJson = JSON.stringify(noteList)
     localStorage.setItem(`notesList`, toJson);
-
 }
 
 
@@ -130,8 +131,6 @@ function editNote(k) {
     storageRetrieve();
 
     addNote(noteList[k].title, noteList[k].content, k);
-
-
 }
 
 function saveOnEdit(position) {
