@@ -80,7 +80,6 @@ function showNotesList() {
         getHTML.insertAdjacentHTML("beforeend", finalHTML)
     }
 
-    console.log("entrou");
 }
 
 function generateNoteId() {
@@ -88,7 +87,6 @@ function generateNoteId() {
 
     for (let i = 0; i < noteList.length; i++) {
         if (id == noteList[i].id) {
-            console.log("achou igual")
             generateNoteId()
         }
     }
@@ -98,7 +96,6 @@ function generateNoteId() {
 
 
 function showOpenedNote(i) {
-    console.log(i)
 
     let getHTML = document.getElementById("openedNote");
     getHTML.textContent = "";
